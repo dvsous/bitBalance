@@ -1,23 +1,22 @@
 :root{
-  --bg:#0f1724;        /* fundo escuro */
-  --card:#0b1220;      /* painel */
-  --accent:#0ea5a4;    /* cor principal (verde-água) */
-  --muted:#94a3b8;     /* texto secundário */
+  --bg:#0f1724;
+  --card:#0b1220;
+  --accent:#0ea5a4;
+  --muted:#94a3b8;
   --glass: rgba(255,255,255,0.04);
   --radius:12px;
   --maxw:820px;
   font-synthesis: none;
 }
 
-*{box-sizing:border-box}
+*{ box-sizing:border-box }
+
 html,body{
   height:100%;
   margin:0;
   font-family: Arial;
   background: linear-gradient(180deg, var(--bg) 0%, #071022 100%);
   color:#e6eef6;
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
 }
 
 .container{
@@ -53,13 +52,11 @@ html,body{
   font-weight:700;
   color:var(--accent);
   font-size:20px;
-  letter-spacing:0.6px;
 }
 
 .title{
   font-size:22px;
   margin:0;
-  line-height:1;
 }
 
 .subtitle{
@@ -68,7 +65,6 @@ html,body{
   font-size:13px;
 }
 
-/* Form */
 .form-row{
   display:flex;
   gap:12px;
@@ -95,27 +91,25 @@ input::placeholder{
 button{
   padding:12px 18px;
   border-radius:10px;
-  border: none;
-  background: linear-gradient(90deg, var(--accent), #06b6b4);
-  color: #02121a;
+  border:none;
+  background:linear-gradient(90deg, var(--accent), #06b6b4);
+  color:#02121a;
   font-weight:700;
   cursor:pointer;
-  box-shadow: 0 6px 18px rgba(14,165,164,0.12);
-  transition: transform .12s ease, box-shadow .12s ease;
+  box-shadow:0 6px 18px rgba(14,165,164,0.12);
+  transition:transform .12s ease;
 }
 
-button:active{ transform: translateY(1px) }
-button:focus{ outline: 3px solid rgba(14,165,164,0.12) }
+button:active{ transform:translateY(1px) }
 
-/* Status panel */
-.status {
+.status{
   display:flex;
   gap:18px;
   align-items:center;
   margin-top:22px;
   padding:14px;
   border-radius:10px;
-  background: linear-gradient(90deg, rgba(255,255,255,0.016), rgba(255,255,255,0.008));
+  background:linear-gradient(90deg, rgba(255,255,255,0.016), rgba(255,255,255,0.008));
   border:1px solid rgba(255,255,255,0.03);
 }
 
@@ -124,20 +118,28 @@ button:focus{ outline: 3px solid rgba(14,165,164,0.12) }
   text-align:center;
   padding:8px;
   border-radius:8px;
-  background: rgba(14,165,164,0.06);
+  background:rgba(14,165,164,0.06);
   color:var(--accent);
   font-weight:700;
 }
 
-.status-right h3{ margin:0; font-size:18px }
-.status-right h4{ margin:4px 0 0; color:var(--muted); font-weight:500;font-size:13px }
+.status-right h3{
+  margin:0;
+  font-size:18px;
+}
 
-/* Small screens */
+.status-right h4{
+  margin:4px 0 0;
+  color:var(--muted);
+  font-weight:500;
+  font-size:13px;
+}
+
 @media (max-width:640px){
   .container{ margin:22px; padding:18px }
   .header{ gap:10px }
   .logo{ width:52px; height:52px; font-size:18px }
   .title{ font-size:18px }
-  .form-row{ flex-direction:column; }
+  .form-row{ flex-direction:column }
   button{ width:100% }
 }

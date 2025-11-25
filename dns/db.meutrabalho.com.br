@@ -12,10 +12,6 @@ $TTL 10
 
 ns      IN A 172.20.0.5
 
-app     IN A 172.20.0.8
-
-www IN A 172.20.0.20
-www IN A 172.20.0.21
-www IN A 172.20.0.22
-
-
+www     IN A 172.20.0.20
+www     IN A 172.20.0.21
+www     IN A 172.20.0.22

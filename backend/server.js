@@ -89,13 +89,14 @@ app.get('/perfil', (req, res) => {
   });
 
   res.send(`
+    <link rel="stylesheet" href="/styles.css">
+
     <h1>Usuário: ${req.session.user.name}</h1>
     <h2>Servidor: ${process.env.SERVER_NAME}</h2>
     <h3>Login: ${loginTimeBR}</h3>
     <h3>Sessão: ${req.sessionID}</h3>
   `);
 });
-
 
 //STATUS
 
