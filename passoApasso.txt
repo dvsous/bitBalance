@@ -1,0 +1,51 @@
+Passo-a-passo para rodar o projeto
+
+1. Instale
+
+Docker
+
+Docker Compose
+
+Verifique no powershell:
+
+docker --version
+docker compose version
+
+2. Entre na pasta do projeto
+cd BitBalance
+
+3. Suba tudo
+docker compose up --build -d
+
+4. Teste pelo navegador
+
+Abra:
+
+http://localhost
+
+
+Ou, se estiver usando DNS:
+
+http://www.meutrabalho.com.br
+
+
+(Só funciona se você apontar no /etc/hosts ou usar o DNS do trabalho.)
+
+5. Faça login
+
+Use:
+
+pedro / 123456
+
+nanda / 123789
+
+6. Teste a sessão distribuída
+
+Dê refresh várias vezes.
+
+O servidor exibido muda (Servidor 1, 2 ou 3).
+
+O usuário continua logado → sessão está no Redis.
+
+7. Parar tudo
+docker compose down

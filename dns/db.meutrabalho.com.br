@@ -1,0 +1,21 @@
+$TTL 10
+
+@   IN  SOA ns.meutrabalho.com.br. admin.meutrabalho.com.br. (
+        1
+        7200
+        1200
+        2419200
+        86400
+)
+
+@       IN NS ns.meutrabalho.com.br.
+
+ns      IN A 172.20.0.5
+
+app     IN A 172.20.0.8
+
+www IN A 172.20.0.20
+www IN A 172.20.0.21
+www IN A 172.20.0.22
+
+

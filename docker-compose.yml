@@ -1,0 +1,99 @@
+services:
+
+  mysql:
+    image: mysql:8
+    container_name: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: trabalho
+    volumes:
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      trabalho_net:
+        ipv4_address: 172.20.0.3
+
+  redis:
+    image: redis:alpine
+    container_name: redis
+    networks:
+      trabalho_net:
+        ipv4_address: 172.20.0.4
+
+  backend1:
+    build: ./backend
+    container_name: backend1
+    environment:
+      - SERVER_NAME=Servidor 1
+    depends_on:
+      - mysql
+      - redis
+    ports:
+      - "3000:3000"
+    networks:
+      trabalho_net:
+        ipv4_address: 172.20.0.10
+
+  backend2:
+    build: ./backend
+    container_name: backend2
+    environment:
+      - SERVER_NAME=Servidor 2
+    depends_on:
+      - mysql
+      - redis
+    networks:
+      trabalho_net:
+        ipv4_address: 172.20.0.11
+
+  backend3:
+    build: ./backend
+    container_name: backend3
+    environment:
+      - SERVER_NAME=Servidor 3
+    depends_on:
+      - mysql
+      - redis
+    networks:
+      trabalho_net:
+        ipv4_address: 172.20.0.12
+
+  dns:
+    build: ./dns
+    container_name: dns
+    ports:
+      - "53:53/udp"
+      - "53:53/tcp"
+    networks:
+      trabalho_net:
+        ipv4_address: 172.20.0.5
+
+  frontend1:
+    build: ./frontend
+    container_name: frontend1
+    ports:
+      - "80:80"
+    networks:
+      trabalho_net:
+        ipv4_address: 172.20.0.20
+
+  frontend2:
+    build: ./frontend
+    container_name: frontend2
+    networks:
+      trabalho_net:
+        ipv4_address: 172.20.0.21
+
+  frontend3:
+    build: ./frontend
+    container_name: frontend3
+    networks:
+      trabalho_net:
+        ipv4_address: 172.20.0.22
+
+networks:
+  trabalho_net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/24

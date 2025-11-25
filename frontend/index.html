@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="styles.css">
+  <title>BitBalance</title>
+</head>
+
+<body>
+
+  <h1>BitBalance</h1>
+  <h2>Sistema em funcionamento</h2>
+
+  <form action="/login" method="POST">
+      <input name="username" placeholder="Usuário" required>
+      <input name="password" type="password" placeholder="Senha" required>
+      <button>Entrar</button>
+  </form>
+
+  <hr>
+
+  <h3>Servidor ativo agora:</h3>
+  <h2 id="server">Carregando...</h2>
+  <h4 id="time"></h4>
+
+  <script>
+    async function checkServer() {
+      try {
+        const res = await fetch('/status');
+        const data = await res.json();
+        document.getElementById('server').innerText = data.server;
+        document.getElementById('time').innerText = "Atualizado: " + data.time;
+      } catch (error) {
+        document.getElementById('server').innerText = "Servidor indisponível";
+      }
+    }
+
+    setInterval(checkServer, 3000);
+    checkServer();
+  </script>
+
+</body>
+
+</html>
